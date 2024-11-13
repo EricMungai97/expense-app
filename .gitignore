@@ -1,2 +1,59 @@
+# Maven build directories
+/target/
+/out/
 
+# Maven specific files
+.mvn/
+!.mvn/wrapper/maven-wrapper.jar
+**/mvnw
+**/mvnw.cmd
+**/pom.xml.tag
+**/pom.xml.releaseBackup
+**/pom.xml.versionsBackup
+**/pom.xml.next
+**/release.properties
+
+# IntelliJ IDEA files
+.idea/
+*.iml
+*.iws
+
+# Eclipse files
+*.classpath
+*.project
+*.settings/
+
+# VS Code settings
+.vscode/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Logs and temporary files
+/logs/
+*.log
+hs_err_pid*
+*.swp
+*.swo
+*~
+
+# Spring Boot specific files
+.env
+*.env
+
+# Local environment-specific configuration
+application-local.yml
+application-local.properties
+
+# Dependency and package cache files
+/node_modules/
+/target/
+
+# Ignore any custom configuration files
+config/
+
+# Ignore IDE-specific configuration files
+*.idea/
+*.vscode/
 .env
