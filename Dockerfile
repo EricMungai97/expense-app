@@ -1,26 +1,14 @@
-# Build stage
-FROM maven:3.6.0-jdk-17-slim AS build
+# Use a lightweight OpenJDK image
+FROM openjdk:17-jdk-slim
 
-# Set the working directory
-WORKDIR /home/app
+# Set the working directory in the container
+WORKDIR /app
 
-# Copy the Maven project files
-COPY pom.xml .
+# Copy the built JAR file into the container
+COPY target/finance-app-0.0.1-SNAPSHOT.jar app.jar
 
-# Copy the source code
-COPY src ./src
-
-# Build the application and skip tests
-RUN mvn clean package -DskipTests
-
-# Package stage
-FROM openjdk:17-jre-slim
-
-# Copy the built JAR from the build stage to the final image
-COPY --from=build /home/app/target/finance-app-0.0.1-SNAPSHOT.jar /usr/local/lib/finance-app.jar
-
-# Expose the application port
+# Expose the application port (default Spring Boot port)
 EXPOSE 8080
 
-# Run the application
-ENTRYPOINT ["java", "-jar", "/usr/local/lib/finance-app.jar"]
+# Run the Spring Boot application
+CMD ["java", "-jar", "app.jar"]
